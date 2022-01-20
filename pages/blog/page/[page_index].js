@@ -7,17 +7,20 @@ import Post from '../../../components/Post';
 import { POSTS_PER_PAGE } from '../../../config';
 
 import { sortByDate } from '../../../utils/index.js';
+import Pagination from '../../../components/Pagination';
 
 export default function BlogPage({ posts, numPages, currentPage }) {
   return (
     <Layout>
-      <h1 className="text-5xl border-b-4 p-5">Blog</h1>
+      <h1 className="text-5xl border-b-4 p-5 font-bold">Blog</h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map((post, index) => (
           <Post key={index} post={post} />
         ))}
       </div>
+
+      <Pagination numPages={numPages} currentPage={currentPage} />
     </Layout>
   );
 }
@@ -34,8 +37,6 @@ export async function getStaticPaths() {
       params: { page_index: i.toString() },
     });
   }
-
-  console.log(paths);
 
   return {
     paths,
