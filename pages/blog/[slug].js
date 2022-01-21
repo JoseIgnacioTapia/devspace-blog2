@@ -48,8 +48,6 @@ export async function getStaticPaths() {
     },
   }));
 
-  console.log(paths);
-
   return {
     paths,
     fallback: false, // Go to 404 page If It doesn´t exist the path
